@@ -20,16 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="title: this is my first blog 1.普通递归会超时 2.动态规划-滚动数组法12345678910111213class Solution &amp;#123;public:    int climbStairs(int n) &amp;#123;        int p &#x3D; 0 ,q &#x3D; 0,r &#x3D; 1;        for(int i &#x3D;1; i&lt;&#x3D;n ;i++)&amp;#123">
+  <meta name="description" content="爬楼梯1.普通递归会超时 2.动态规划-滚动数组法12345678910111213class Solution &amp;#123;public:    int climbStairs(int n) &amp;#123;        int p &#x3D; 0 ,q &#x3D; 0,r &#x3D; 1;        for(int i &#x3D;1; i&lt;&#x3D;n ;i++)&amp;#123;            p &#x3D; q;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="师念念的博客">
 <meta property="og:url" content="http://example.com/2021/07/21/%E7%88%AC%E6%A5%BC%E6%A2%AF/index.html">
 <meta property="og:site_name" content="师念念的博客">
-<meta property="og:description" content="title: this is my first blog 1.普通递归会超时 2.动态规划-滚动数组法12345678910111213class Solution &amp;#123;public:    int climbStairs(int n) &amp;#123;        int p &#x3D; 0 ,q &#x3D; 0,r &#x3D; 1;        for(int i &#x3D;1; i&lt;&#x3D;n ;i++)&amp;#123">
+<meta property="og:description" content="爬楼梯1.普通递归会超时 2.动态规划-滚动数组法12345678910111213class Solution &amp;#123;public:    int climbStairs(int n) &amp;#123;        int p &#x3D; 0 ,q &#x3D; 0,r &#x3D; 1;        for(int i &#x3D;1; i&lt;&#x3D;n ;i++)&amp;#123;            p &#x3D; q;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode-cn.com/solution-static/70/70_fig1.gif">
+<meta property="og:image" content="c:/Users/shiniannian/AppData/Roaming/Typora/typora-user-images/image-20210721140658447.png">
 <meta property="article:published_time" content="2021-07-21T05:37:20.688Z">
-<meta property="article:modified_time" content="2021-07-21T05:37:47.118Z">
+<meta property="article:modified_time" content="2021-07-21T06:07:00.665Z">
 <meta property="article:author" content="师念念">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://assets.leetcode-cn.com/solution-static/70/70_fig1.gif">
@@ -176,7 +177,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-07-21 13:37:20 / 修改时间：13:37:47" itemprop="dateCreated datePublished" datetime="2021-07-21T13:37:20+08:00">2021-07-21</time>
+              <time title="创建时间：2021-07-21 13:37:20 / 修改时间：14:07:00" itemprop="dateCreated datePublished" datetime="2021-07-21T13:37:20+08:00">2021-07-21</time>
             </span>
 
           
@@ -190,11 +191,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>title: this is my first blog</p>
-<h1 id="1-普通递归"><a href="#1-普通递归" class="headerlink" title="1.普通递归"></a>1.普通递归</h1><p>会超时</p>
-<h1 id="2-动态规划-滚动数组法"><a href="#2-动态规划-滚动数组法" class="headerlink" title="2.动态规划-滚动数组法"></a>2.动态规划-滚动数组法</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span> ,q = <span class="number">0</span>,r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span>; i&lt;=n ;i++)&#123;</span><br><span class="line">            p = q;</span><br><span class="line">            q = r;</span><br><span class="line">            r = p + q;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h1 id="爬楼梯"><a href="#爬楼梯" class="headerlink" title="爬楼梯"></a>爬楼梯</h1><h2 id="1-普通递归"><a href="#1-普通递归" class="headerlink" title="1.普通递归"></a>1.普通递归</h2><p>会超时</p>
+<h2 id="2-动态规划-滚动数组法"><a href="#2-动态规划-滚动数组法" class="headerlink" title="2.动态规划-滚动数组法"></a>2.动态规划-滚动数组法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span> ,q = <span class="number">0</span>,r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span>; i&lt;=n ;i++)&#123;</span><br><span class="line">            p = q;</span><br><span class="line">            q = r;</span><br><span class="line">            r = p + q;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://assets.leetcode-cn.com/solution-static/70/70_fig1.gif" alt="fig1"></p>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/">https://leetcode-cn.com/problems/binary-tree-inorder-traversal/</a></p>
+<p><img src="C:\Users\shiniannian\AppData\Roaming\Typora\typora-user-images\image-20210721140658447.png" alt="image-20210721140658447"></p>
 
     </div>
 
@@ -272,7 +274,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%99%AE%E9%80%9A%E9%80%92%E5%BD%92"><span class="nav-number">1.</span> <span class="nav-text">1.普通递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">2.动态规划-滚动数组法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="nav-number">1.</span> <span class="nav-text">爬楼梯</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%99%AE%E9%80%9A%E9%80%92%E5%BD%92"><span class="nav-number">1.1.</span> <span class="nav-text">1.普通递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2.动态规划-滚动数组法</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
